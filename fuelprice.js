@@ -23,6 +23,12 @@ window.onload = function(){
     $('#passengers').on('keyup', function () {
         calculateCost();
     });
+
+    $('#roundTrip').change(function(){
+        calculateCost();
+    });
+
+    $('.ui.checkbox').checkbox();
 }
 
 function setLocation(locationQueryString, startOrEnd) {
@@ -68,6 +74,10 @@ function calculateCost() {
         litres = distance/mpl;
         pence = litres * price;
         pounds = pence / 100;
+        
+        if ($('#roundTrip').is(":checked")) {
+            pounds = pounds * 2;
+        }
 
         $('#result').val("£"+ pounds.toFixed(2));
 
