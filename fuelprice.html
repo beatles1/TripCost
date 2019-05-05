@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>FuelPrice</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+        <script src="fuelprice.js" type="text/javascript" charset="utf-8"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <br />
+        <div class="ui container">
+            <h4 class="ui dividing header">Locations</h4>
+            <form class="ui form">
+                <div class="field">
+                    <label>Start</label>
+                    <input type='text' id='startInput' />
+                </div>
+                <div id="startLabel"></div>
+                <div class="field">
+                    <label>End</label>
+                    <input type='text' id='endInput' />
+                </div>
+                <div id="endLabel"></div>
+                <div class="field">
+                    <label>Distance</label>
+                    <div id="distanceLabel"></div>
+                </div>
+            </form>
+            <h4 class="ui dividing header">Fuel Info</h4>
+            <form class="ui form">
+                <div class="field">
+                    <label>Price (p/litre)</label>
+                    <input type='text' id='fuelPrice' value='130'>
+                </div>
+                <div class="field">
+                    <label>MPG</label>
+                    <input type='text' id='mpg' value='40'>
+                </div>
+            </form>
+            <h4 class="ui dividing header">Result</h4>
+            <p>
+                £<span id="result"></span>
+            </p>
+        </div>
+    </body>
+</html>
