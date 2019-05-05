@@ -5,39 +5,13 @@ var distance;
 var travelMinutes;
 
 window.onload = function(){
-    var doneTypingInterval = 1000;
-
-    // Start location input processing
-    var startTimer;
-
-    $('#startInput').on('keyup', function () {
-        clearTimeout(startTimer);
-        startTimer = setTimeout(function(){
-            setLocation($('#startInput').val(), 'start');
-        }, doneTypingInterval);
+    $('#startInput').focusout(function() {
+        setLocation($('#startInput').val(), 'start');
     });
 
-    //on keydown, clear the countdown 
-    $('#startInput').on('keydown', function () {
-        clearTimeout(startTimer);
+    $('#endInput').focusout(function() {
+        setLocation($('#endInput').val(), 'end');
     });
-
-
-    // End location input processing
-    var endTimer;
-
-    $('#endInput').on('keyup', function () {
-        clearTimeout(endTimer);
-        endTimer = setTimeout(function(){
-            setLocation($('#endInput').val(), 'end');
-        }, doneTypingInterval);
-    });
-
-    //on keydown, clear the countdown 
-    $('#endInput').on('keydown', function () {
-        clearTimeout(endTimer);
-    });
-
 
     // On local vars changed
     $('#fuelPrice').on('keyup', function () {
