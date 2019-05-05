@@ -52,7 +52,7 @@ function calculateDistance() {
             distance = data['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
             travelMinutes = data['resourceSets'][0]['resources'][0]['results'][0]['travelDuration'];
             $('#distanceLabel').text(distance.toFixed(2) +" miles");
-            $('#travelTime').text(travelMinutes.toFixed(2) +" minutes");
+            $('#travelTime').text(minsToString(travelMinutes.toFixed(2)));
             calculateCost()
         });
     }
@@ -74,5 +74,18 @@ function calculateCost() {
         passengers = parseInt($('#passengers').val());
         perPassenger = pounds/passengers;
         $('#resultperpassenger').val("£"+ perPassenger.toFixed(2));
+    }
+}
+
+function minsToString(n) {
+    var num = n;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    if (rhours > 0) {
+        return num + "" + rhours + " hours and " + rminutes + " minutes";
+    } else {
+        return "" + rminutes +" minutes"
     }
 }
