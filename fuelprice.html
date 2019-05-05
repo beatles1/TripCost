@@ -17,38 +17,47 @@
     <body>
         <br />
         <div class="ui container">
-            <h4 class="ui dividing header">Locations</h4>
-            <form class="ui form">
-                <div class="field">
-                    <label>Start</label>
-                    <input type='text' id='startInput' />
+            <div class="ui centered cards">
+                <div class="ui card">
+                    <div class="content"><i class="map icon"></i> Locations</div>
+                    <div class="content">
+                        <form class="ui form">
+                            <div class="field">
+                                <label>Start</label>
+                                <input type='text' id='startInput' />
+                            </div>
+                            <div class="field">
+                                <label>End</label>
+                                <input type='text' id='endInput' />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="extra content">
+                        Distance: <span id="distanceLabel"></span>
+                    </div>
                 </div>
-                <div id="startLabel"></div>
-                <div class="field">
-                    <label>End</label>
-                    <input type='text' id='endInput' />
+                <div class="ui card">
+                    <div class="content"><i class="tachometer alternate icon"></i> Fuel Info</div>
+                    <div class="content">
+                        <form class="ui form">
+                                <div class="field">
+                                    <label>Price (p/litre)</label>
+                                    <input type='text' id='fuelPrice' value='130'>
+                                </div>
+                                <div class="field">
+                                    <label>MPG</label>
+                                    <input type='text' id='mpg' value='40'>
+                                </div>
+                            </form>
+                    </div>
                 </div>
-                <div id="endLabel"></div>
-                <div class="field">
-                    <label>Distance</label>
-                    <div id="distanceLabel"></div>
+                <div class="ui card">
+                        <div class="content"><i class="money bill alternate icon"></i> Result</div>
+                        <div class="content">
+                            £<span id="result"></span>
+                        </div>
                 </div>
-            </form>
-            <h4 class="ui dividing header">Fuel Info</h4>
-            <form class="ui form">
-                <div class="field">
-                    <label>Price (p/litre)</label>
-                    <input type='text' id='fuelPrice' value='130'>
-                </div>
-                <div class="field">
-                    <label>MPG</label>
-                    <input type='text' id='mpg' value='40'>
-                </div>
-            </form>
-            <h4 class="ui dividing header">Result</h4>
-            <p>
-                £<span id="result"></span>
-            </p>
+            </div>
         </div>
     </body>
 </html>
