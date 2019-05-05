@@ -84,7 +84,7 @@ function minsToString(n) {
     var minutes = (hours - rhours) * 60;
     var rminutes = Math.round(minutes);
     if (rhours > 0) {
-        return num + "" + rhours + " hours and " + rminutes + " minutes";
+        return "" + rhours + " hours and " + rminutes + " minutes";
     } else {
         return "" + rminutes +" minutes"
     }
