@@ -20,6 +20,9 @@ window.onload = function(){
     $('#mpg').on('keyup', function () {
         calculateCost();
     });
+    $('#passengers').on('keyup', function () {
+        calculateCost();
+    });
 }
 
 function setLocation(locationQueryString, startOrEnd) {
@@ -48,7 +51,8 @@ function calculateDistance() {
         $.getJSON( "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix/?key="+ apiKey +"&origins="+ startPosition['lat'] +","+ startPosition['lon'] +"&destinations="+ endPosition['lat'] +","+ endPosition['lon'] +"&travelMode=driving&distanceUnit=mi&timeUnit=minute", function( data ) {
             distance = data['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
             travelMinutes = data['resourceSets'][0]['resources'][0]['results'][0]['travelDuration'];
-            $('#distanceLabel').text(distance +" miles");
+            $('#distanceLabel').text(distance.toFixed(2) +" miles");
+            $('#travelTime').text(travelMinutes.toFixed(2) +" minutes");
             calculateCost()
         });
     }
@@ -65,6 +69,10 @@ function calculateCost() {
         pence = litres * price;
         pounds = pence / 100;
 
-        $('#result').text(pounds);
+        $('#result').val("£"+ pounds.toFixed(2));
+
+        passengers = parseInt($('#passengers').val());
+        perPassenger = pounds/passengers;
+        $('#resultperpassenger').val("£"+ perPassenger.toFixed(2));
     }
 }
