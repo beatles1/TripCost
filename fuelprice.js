@@ -130,7 +130,7 @@ function drawMap() {
         showScalebar: false,
         showTrafficButton: false,
         showZoomButtons: false,
-        showTermsLink: false,
+        showTermsLink: true,
     });
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
         var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
