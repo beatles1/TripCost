@@ -57,7 +57,7 @@ function setLocation(locationQueryString, startOrEnd) {
 
 function calculateDistance() {
     if (startPosition && endPosition) {
-        $('#routeMap').addClass('loading');
+        $('#routeSegment').addClass('loading');
         $.getJSON( "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix/?key="+ apiKey +"&origins="+ startPosition['lat'] +","+ startPosition['lon'] +"&destinations="+ endPosition['lat'] +","+ endPosition['lon'] +"&travelMode=driving&distanceUnit=mi&timeUnit=minute", function( data ) {
             distance = data['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
             travelMinutes = data['resourceSets'][0]['resources'][0]['results'][0]['travelDuration'];
@@ -119,7 +119,7 @@ function startMap() {
         showTermsLink: false,
     });
 
-    $('#routeMap').removeClass('loading');
+    $('#routeSegment').removeClass('loading');
 }
 
 function drawMap() {
@@ -136,6 +136,6 @@ function drawMap() {
         //directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel') });
         directionsManager.calculateDirections();
 
-        $('#routeMap').removeClass('loading');
+        $('#routeSegment').removeClass('loading');
     });    
 }
