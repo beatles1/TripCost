@@ -128,8 +128,8 @@ function drawMap() {
         var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
         // Set Route Mode to driving
         directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
-        var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: startPosition['addressString'], location: new Microsoft.Maps.Location(startPosition['lat'], startPosition['lon']) });
-        var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: endPosition['addressString'], location: new Microsoft.Maps.Location(endPosition['lat'], endPosition['lon']) });
+        var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: startPosition['addressString'].split(',')[0], location: new Microsoft.Maps.Location(startPosition['lat'], startPosition['lon']) });
+        var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: endPosition['addressString'].split(',')[0], location: new Microsoft.Maps.Location(endPosition['lat'], endPosition['lon']) });
         directionsManager.addWaypoint(waypoint1);
         directionsManager.addWaypoint(waypoint2);
         // Set the element in which the itinerary will be rendered
