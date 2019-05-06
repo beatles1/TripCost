@@ -108,7 +108,7 @@ function startMap() {
     map = new Microsoft.Maps.Map(document.getElementById('routeMap'), {
         /* No need to set credentials if already passed in URL */
         center: new Microsoft.Maps.Location(51.5074, 0.1278),
-        zoom: 1,
+        zoom: 3,
         showDashboard: false,
         showLocateMeButton: false,
         showMapTypeSelector: false,
@@ -120,18 +120,7 @@ function startMap() {
 }
 
 function drawMap() {
-    map = new Microsoft.Maps.Map(document.getElementById('routeMap'), {
-        /* No need to set credentials if already passed in URL */
-        center: new Microsoft.Maps.Location(51.5074, 0.1278),
-        zoom: 1,
-        showDashboard: false,
-        showLocateMeButton: false,
-        showMapTypeSelector: false,
-        showScalebar: false,
-        showTrafficButton: false,
-        showZoomButtons: false,
-        showTermsLink: true,
-    });
+    startMap()
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
         var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
         // Set Route Mode to driving
