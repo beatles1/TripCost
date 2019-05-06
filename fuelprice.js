@@ -3,6 +3,7 @@ var startPosition;
 var endPosition;
 var distance;
 var travelMinutes;
+var map;
 
 window.onload = function(){
     $('#startInput').focusout(function() {
@@ -29,6 +30,8 @@ window.onload = function(){
     });
 
     $('.ui.checkbox').checkbox();
+
+    startMap()
 }
 
 function setLocation(locationQueryString, startOrEnd) {
@@ -60,6 +63,7 @@ function calculateDistance() {
             $('#distanceLabel').text(distance.toFixed(2) +" miles");
             $('#travelTime').text(minsToString(travelMinutes.toFixed(2)));
             calculateCost()
+            drawMap()
         });
     }
 }
@@ -98,4 +102,46 @@ function minsToString(n) {
     } else {
         return "" + rminutes +" minutes"
     }
+}
+
+function startMap() {
+    map = new Microsoft.Maps.Map(document.getElementById('routeMap'), {
+        /* No need to set credentials if already passed in URL */
+        center: new Microsoft.Maps.Location(51.5074, 0.1278),
+        zoom: 1,
+        showDashboard: false,
+        showLocateMeButton: false,
+        showMapTypeSelector: false,
+        showScalebar: false,
+        showTrafficButton: false,
+        showZoomButtons: false,
+        showTermsLink: false,
+    });
+}
+
+function drawMap() {
+    map = new Microsoft.Maps.Map(document.getElementById('routeMap'), {
+        /* No need to set credentials if already passed in URL */
+        center: new Microsoft.Maps.Location(51.5074, 0.1278),
+        zoom: 1,
+        showDashboard: false,
+        showLocateMeButton: false,
+        showMapTypeSelector: false,
+        showScalebar: false,
+        showTrafficButton: false,
+        showZoomButtons: false,
+        showTermsLink: false,
+    });
+    Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+        // Set Route Mode to driving
+        directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
+        var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: startPosition['addressString'], location: new Microsoft.Maps.Location(startPosition['lat'], startPosition['lon']) });
+        var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: endPosition['addressString'], location: new Microsoft.Maps.Location(endPosition['lat'], endPosition['lon']) });
+        directionsManager.addWaypoint(waypoint1);
+        directionsManager.addWaypoint(waypoint2);
+        // Set the element in which the itinerary will be rendered
+        //directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel') });
+        directionsManager.calculateDirections();
+    });    
 }
