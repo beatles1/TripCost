@@ -43,7 +43,7 @@ function setLocation(locationQueryString, startOrEnd) {
         lat = loc['point']['coordinates'][0];
         lon = loc['point']['coordinates'][1];
         addressString = loc['address']['formattedAddress'];
-        
+
         if (startOrEnd != 'end') {
             startPosition = {'lon': lon, 'lat': lat, 'addressString': addressString};
             $('#startInput').val(addressString);
@@ -79,7 +79,7 @@ function calculateCost() {
         litres = distance/mpl;
         pence = litres * price;
         pounds = pence / 100;
-        
+
         if ($('#roundTrip').is(":checked")) {
             pounds = pounds * 2;
         }
@@ -109,7 +109,7 @@ function startMap() {
     map = new Microsoft.Maps.Map(document.getElementById('routeMap'), {
         /* No need to set credentials if already passed in URL */
         center: new Microsoft.Maps.Location(51.5074, 0.1278),
-        zoom: 3,
+        zoom: 4,
         showDashboard: false,
         showLocateMeButton: false,
         showMapTypeSelector: false,
@@ -137,5 +137,5 @@ function drawMap() {
         directionsManager.calculateDirections();
 
         $('#routeSegment').removeClass('loading');
-    });    
+    });
 }
